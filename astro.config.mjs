@@ -9,6 +9,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 import tailwind  from '@astrojs/tailwind';
 
+import svgr from 'vite-plugin-svgr';
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,5 +17,10 @@ export default defineConfig({
 
   vite: {
     // plugins: [tailwindcss()]
+    plugins: [svgr()]
+  },
+
+  experimental: {
+    svg: true,
   }
 });
