@@ -36,7 +36,7 @@ export default function App() {
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4 sm:justify-center md:justify-start">
         <NavbarItem>
-          <Link className="text-foreground hover:text-primary" href="#">
+          <Link className="text-foreground hover:text-primary" href="/wersindwir">
             Wer sind wir?
           </Link>
         </NavbarItem> 

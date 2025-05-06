@@ -1,0 +1,20 @@
+---
+import Navbar from '../components/navbar.jsx';
+import Layout from '../layouts/Layout.astro';
+import Infopage from '@/components/infopage.astro';
+---
+
+<Layout>
+	<Navbar client:visible />
+    <Infopage>
+</Layout>
+<body>
+    <h2>
+      Fachschaft EIT
+    </h2><br>
+    <h6 class="text-red text-5xl md:text-7xl lg:text-[120px] font-hero font-bold">
+      <p>
+        Die Fachschaft EIT ist die studentische Vertretung der Studierenden des Studiengangs EIT (Elektro- und Informationstechnik) an der Hochschule für angewandte Wissenschaften in Karlsruhe.
+      </p>
+    </h6>
+  </body>
