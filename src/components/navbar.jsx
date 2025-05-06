@@ -7,7 +7,6 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   Link,
-  Button,
 } from "@heroui/react";import {Avatar, AvatarGroup, AvatarIcon} from "@heroui/react";
 import Logo from '../assets/fs-eit-logo.svg?react';
 import LogoOnlyWords from '../assets/fs-eit-horizontal-words.svg?react';
