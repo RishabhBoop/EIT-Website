@@ -1,13 +1,6 @@
 'use client';
 import React from "react";
-import { Doto } from 'next/font/google';
 import { Button } from "@heroui/react";
-
-const doto = Doto({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-doto',
-});
 
 export default function Homepage() {
   return (

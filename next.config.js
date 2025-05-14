@@ -1,6 +1,10 @@
+const { default: next } = require('next')
+const withMDX = require('@next/mdx')()
+
 /** @type {import('next').NextConfig} */
-module.exports = {
-    turbopack: {
+const nextConfig = {
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  turbopack: {
       rules: {
         '*.svg': {
           loaders: ['@svgr/webpack'],
@@ -8,5 +12,6 @@ module.exports = {
         },
       },
     },
-  }
+};
+module.exports = withMDX(nextConfig);
   

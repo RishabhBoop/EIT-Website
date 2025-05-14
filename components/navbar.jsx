@@ -6,7 +6,6 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Link,
 } from "@heroui/react";
 import { Avatar, AvatarGroup, AvatarIcon } from "@heroui/react";
 import {
@@ -19,6 +18,8 @@ import { Switch } from "@heroui/react";
 import {useTheme} from "next-themes";
 import Logo from "../logos/fs-eit-logo.svg";
 import React from "react";
+import Link from "next/link";
+
 
 export const MoonIcon = ({className}) => {
   return (
@@ -109,9 +110,11 @@ function AccDropdownLoggedOut() {
           />
         </DropdownTrigger>
         <DropdownMenu aria-label="Dynamic Actions">
-          <DropdownItem key={"settings"} >
-            <p className="text-md">Login</p>
-          </DropdownItem>
+          {/* <DropdownItem key={"settings"} >
+            <Link href="/login" passHref>
+              <p className="text-md">Login</p>
+            </Link>  
+          </DropdownItem> */}
           <DropdownItem
             key="theme"
             className="cursor-default"
@@ -153,28 +156,37 @@ export default function App() {
       <NavbarBrand className="items-center gap-2.5 justify-end sm:justify-start">
         <Logo className={"h-[50px]"} />
       </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4 justify-center sm:justify-center md:justify-start">
-        <h1 className="select-none text-white text-xl text-center md:text-xl lg:text-5xl font-hero font-bold doto.className">
-          <p className="text-black dark:text-white">Fachschaft EIT</p>
-        </h1>
+      <NavbarContent className="hidden sm:flex gap-4 justify-evenly">
+        <p className="select-none text-white text-xl text-center md:text-xl lg:text-5xl font-dot font-semibold text-black dark:text-white">Fachschaft EIT</p>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
           <AccDropdownLoggedOut />
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu className="sm:hidden bg-opacity-60 blur-full">
+      <NavbarMenu className="bg-opacity-60 blur-full">
         {/* This is a menu that is only visible on mobile devices. */}
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="w-full text-foreground py-5"
-              href="#"
-            >
-              {item}
-            </Link>
+          <NavbarMenuItem>
+            <link href="/info" passHref>
+              <p className="w-full text-foreground py-5">
+                Wer sind wir?
+              </p>          
+            </link>
           </NavbarMenuItem>
-        ))}
+          <NavbarMenuItem>
+            <link href="#">
+              <p className="w-full text-foreground py-5">
+                Events
+              </p>          
+            </link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <link href="#">
+              <p className="w-full text-foreground py-5">
+                O-Phase
+              </p>          
+            </link>
+          </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
   );

@@ -11,12 +11,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        hero: ['"Doto"'],
+        dot: ['Doto'],
       },
     },
   },
   darkMode: "class", // for manual toggling
-  //   darkMode: "media",
   plugins: [
     heroui({
 		themes: {
