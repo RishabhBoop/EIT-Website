@@ -19,6 +19,8 @@ import {useTheme} from "next-themes";
 import Logo from "../logos/fs-eit-logo.svg";
 import React from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from 'next/navigation'; // Import the hook to detect route changes
+
 
 
 export const MoonIcon = ({className}) => {
@@ -95,14 +97,13 @@ function AccDropdownLoggedOut() {
   React.useEffect(() => {
     setMounted(true);
   }, []);
-
   // if we are on the client, check the local storage for the theme
   // if we are on the server, we load with the default theme
   const currentIsSelected = mounted ? resolvedTheme === 'dark' : false;
 
   return (
     <div className="flex items-center gap-4">
-      <Dropdown placement="bottom-end" closeOnSelect={false} className="bg-white dark:bg-black bg-opacity-40 blur-full">
+      <Dropdown placement="bottom-end" closeOnSelect={false} className="bg-white dark:bg-black bg-opacity-40 backdrop-blur-full">
         <DropdownTrigger>
           <Avatar
             as="button"
@@ -138,6 +139,18 @@ function AccDropdownLoggedOut() {
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
+  const pathname = usePathname();
+
+  // run as soon as the component mounts
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  React.useEffect(() => {
+    setIsMenuOpen(false); // Close the navigation panel
+  }, [ pathname ]);
+
 
   const menuItems = ["Wer sind wir?", "Events", "O-Phase"];
 
@@ -145,48 +158,50 @@ export default function App() {
     <Navbar
       maxWidth="full"
       onMenuOpenChange={setIsMenuOpen}
-      // isBlurred={true}
       isBordered={false}
-      className="fixed top-0 z-50 backdrop-blur-full bg-white dark:bg-black bg-opacity-50"
+      className="fixed top-0 z-50 backdrop-blur-full bg-white bg-opacity-50 backdrop-blur-md dark:bg-black dark:bg-opacity-50 dark:backdrop-blur-md "
+      isMenuDefaultOpen={false}
     >
       <NavbarMenuToggle
         aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        className="sm:hidden"
       />
       <NavbarBrand className="items-center gap-2.5 justify-end sm:justify-start">
-        <Logo className={"h-[50px]"} />
+        <Link href="/">
+          <Logo className={"h-[50px]"} />
+        </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4 justify-evenly">
-        <p className="select-none text-white text-xl text-center md:text-xl lg:text-5xl font-dot font-semibold text-black dark:text-white">Fachschaft EIT</p>
+        <p 
+        className="select-none 
+        text-2xl text-center md:text-3xl lg:text-3xl xl:text-4xl
+        font-doto font-semibold text-black dark:text-white">
+          {mounted ? "Fachschaft EIT" : ""}
+        </p>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
           <AccDropdownLoggedOut />
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu className="bg-opacity-60 blur-full">
+      <NavbarMenu 
+      className="bg-opacity-60 blur-full w-full md:w-1/2 lg:w-1/3"
+      >
         {/* This is a menu that is only visible on mobile devices. */}
-          <NavbarMenuItem>
-            <link href="/info" passHref>
-              <p className="w-full text-foreground py-5">
-                Wer sind wir?
-              </p>          
-            </link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <link href="#">
-              <p className="w-full text-foreground py-5">
-                Events
-              </p>          
-            </link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <link href="#">
-              <p className="w-full text-foreground py-5">
-                O-Phase
-              </p>          
-            </link>
-          </NavbarMenuItem>
+        <NavbarMenuItem key="info">
+          <Link className="w-full text-foreground py-5" href="/info">
+            Wer sind wir?
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem key="events">
+          <Link className="w-full text-foreground py-5" href="#">
+            Events
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem key="o-phase">
+          <Link className="w-full text-foreground py-5" href="#">
+            O-Phase
+          </Link>
+        </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
   );
