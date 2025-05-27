@@ -16,11 +16,18 @@ export const authOptions = {
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "text", placeholder: "enter Email" },
-        password: { label: "Password", type: "password", placeholder: "enter Password" },
+        password: {
+          label: "Password",
+          type: "password",
+          placeholder: "enter Password",
+        },
       },
       async authorize(credentials) {
         try {
-          const response = await client.login(credentials.email, credentials.password);
+          const response = await client.login(
+            credentials.email,
+            credentials.password
+          );
           if (response.access_token) {
             const userResponse = await client.request(
               readMe({
@@ -68,7 +75,10 @@ export const authOptions = {
       return session;
     },
   },
-  pages: { signIn: "/login", signOut: "/" },
+  pages: {
+    signIn: "/login",
+    signOut: "/info",
+  },
   secret: process.env.JWT_SECRET,
 };
 
