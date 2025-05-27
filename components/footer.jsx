@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Footer() {
     return (
         <footer className="opacity-100 text-black dark:text-white">

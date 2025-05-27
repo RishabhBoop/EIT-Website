@@ -1,9 +1,9 @@
 "use client";
 import "../styles/globals.css";
 import { fontSans, fontUbuntu, fontDoto } from "@/config/fonts"; // Import fontDoto
-import NavBar from "../components/navbar";
 import Footer from "../components/footer";
 import { Providers } from "./providers";
+
 import React from "react";
 
 export default function RootLayout({ children }) {
@@ -20,21 +20,20 @@ export default function RootLayout({ children }) {
       <body
         className={`min-h-screen bg-background font-sans antialiased ${fontSans.variable} ${fontUbuntu.variable} ${fontDoto.variable}`} // Add fontDoto.variable
       >
-        <Providers
-          themeProps={{
-            attribute: "class",
-            defaultTheme: "dark",
-            enableSystem: false,
-          }}
-        >
-          <div className="flex flex-col min-h-screen">
-            <NavBar />
-            <main className="flex-grow flex items-center justify-center">
-              {children}
-            </main>
-            <Footer />
-          </div>
-        </Providers>
+          <Providers
+            themeProps={{
+              attribute: "class",
+              defaultTheme: "dark",
+              enableSystem: false,
+            }}
+          >
+            <div className="flex flex-col min-h-screen">
+              <main className="flex-grow flex items-center justify-center">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </Providers>
       </body>
     </html>
   );

@@ -11,9 +11,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        doto: ['var(--font-doto)', 'sans-serif'], // Changed to use CSS variable
-        montserrat: ['Montserrat'], // Assuming Montserrat might be used later or via direct CSS
-        ubuntu: ['var(--font-ubuntu)', 'sans-serif'],
+        doto: ['Doto'],
+        montserrat: ['Montserrat'],
+        ubuntu: ['Ubuntu'],
+        sixtyfour: ['sixtyfour'],
       },
     },
   },

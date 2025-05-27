@@ -1,7 +1,7 @@
 "use client";
 import "../../styles/globals.css";
-import { Providers } from "../providers";
 import NavBar from "../../components/navbar";
+import { Providers } from "../providers";
 import React from "react";
 
 export default function RootLayout({ children }) {
