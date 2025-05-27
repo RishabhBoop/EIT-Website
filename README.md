@@ -18,7 +18,17 @@ git clone https://github.com/RishabhBoop/EIT-Website.git
 npm install
 ```
 
-4. Run the project
+4. Create a `.env` file
+   Create a `.env` file in the root directory of the project and add the following environment variables:
+
+```
+DIRECTUS_URL: Needed to connect to the Directus instance.
+JWT_SECRET: Needed to sign JWT tokens.
+NEXTAUTH_URL= Needed for NextAuth.js to know the URL of the application (localhost for development).
+```
+The secret can be found in the FS Cloud.
+
+5. Run the project
 
 ```bash
 npm run dev
